@@ -1,0 +1,72 @@
+@startuml
+
+actor User
+participant DepartmentController
+participant DepartmentService
+participant DepartmentRepository
+
+User->DepartmentController: Create department with description and parentID
+DepartmentController->DepartmentService: Create department
+DepartmentService->DepartmentRepository: Save department
+DepartmentRepository->DepartmentController: Return department
+DepartmentController->User: Return created department
+
+User->DepartmentController: Read department with departmentID
+DepartmentController->DepartmentService: Get department by departmentID
+DepartmentService->DepartmentRepository: Find department by departmentID
+DepartmentRepository->DepartmentService: Return found department
+DepartmentService->DepartmentController: Return department
+DepartmentController->User: Return found department
+
+User->DepartmentController: Update department with departmentID, new description, and new parentID
+DepartmentController->DepartmentService: Update department
+DepartmentService->DepartmentRepository: Update department
+DepartmentRepository->DepartmentController: Return updated department
+DepartmentController->User: Return updated department
+
+User->DepartmentController: Delete department with departmentID
+DepartmentController->DepartmentService: Delete department
+DepartmentService->DepartmentRepository: Delete department
+DepartmentRepository->DepartmentController: Return deleted department
+DepartmentController->User: Return deleted department
+
+User->EmployeeController: Create employee with name, departmentID, and managerID
+EmployeeController->EmployeeService: Create employee
+EmployeeService->EmployeeRepository: Save employee
+EmployeeRepository->EmployeeController: Return created employee
+EmployeeController->User: Return created employee
+
+User->EmployeeController: Read employee with employeeID
+EmployeeController->EmployeeService: Get employee by employeeID
+EmployeeService->EmployeeRepository: Find employee by employeeID
+EmployeeRepository->EmployeeService: Return found employee
+EmployeeService->EmployeeController: Return employee
+EmployeeController->User: Return found employee
+
+User->EmployeeController: Update employee with employeeID, new name, new departmentID, and new managerID
+EmployeeController->EmployeeService: Update employee
+EmployeeService->EmployeeRepository: Update employee
+EmployeeRepository->EmployeeController: Return updated employee
+EmployeeController->User: Return updated employee
+
+User->EmployeeController: Delete employee with employeeID
+EmployeeController->EmployeeService: Delete employee
+EmployeeService->EmployeeRepository: Delete employee
+EmployeeRepository->EmployeeController: Return deleted employee
+EmployeeController->User: Return deleted employee
+
+User->EmployeeController: Get all employees by departmentID
+EmployeeController->EmployeeService: Get all employees by departmentID
+EmployeeService->EmployeeRepository: Find employees by departmentID
+EmployeeRepository->EmployeeService: Return found employees
+EmployeeService->EmployeeController: Return employees
+EmployeeController->User: Return all employees
+
+User->EmployeeController: Get all managers by departmentID
+EmployeeController->EmployeeService: Get all managers by departmentID
+EmployeeService->EmployeeRepository: Find managers by departmentID
+EmployeeRepository->EmployeeService: Return found managers
+EmployeeService->EmployeeController: Return managers
+EmployeeController->User: Return all managers
+@enduml
+
